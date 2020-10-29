@@ -13,17 +13,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Variables4", "Variables4\Va
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Variables5", "Variables5\Variables5.csproj", "{86E3C5C3-03D7-4F0B-A5AE-031A1414CE53}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Branching2", "Branching2\Branching2.csproj", "{78618065-7E25-48CF-B828-F89E63B4618B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Branching1", "Branching2\Branching1.csproj", "{78618065-7E25-48CF-B828-F89E63B4618B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Branching3", "Branching3\Branching3.csproj", "{7A868238-7F1E-4F4B-90FB-D5DB3A8EF36E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Branching4", "Branching4\Branching4.csproj", "{06FF905F-A05C-473D-947C-2FBA2A8D5EA6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Branching4", "Branching4\Branching4.csproj", "{06FF905F-A05C-473D-947C-2FBA2A8D5EA6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Branching5", "Branching5\Branching5.csproj", "{14190403-D210-4F6E-9640-8B1043EC14C5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Branching5", "Branching5\Branching5.csproj", "{14190403-D210-4F6E-9640-8B1043EC14C5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Branching1", "Branching1\Branching1.csproj", "{E4420C37-0481-4589-ABF5-A4886596008D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Branching2", "Branching1\Branching2.csproj", "{E4420C37-0481-4589-ABF5-A4886596008D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyLib2", "MyLib2\MyLib2.csproj", "{94509D9C-20FF-4A94-881C-4151C9BD7A40}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyLib2", "MyLib2\MyLib2.csproj", "{94509D9C-20FF-4A94-881C-4151C9BD7A40}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyLib1", "MyLib1\MyLib1.csproj", "{F98CE0B4-0C99-41A1-9507-C7EE58C24A31}"
 EndProject

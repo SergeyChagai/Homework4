@@ -1,19 +1,19 @@
 ﻿using System;
-using System.Threading.Tasks.Dataflow;
 using MyLib;
 
 namespace Branching1
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            Console.Write("Введите число а: ");
-            int a = Convert.ToInt32(Console.ReadLine());
-            Console.Write("Введите число b: ");
-            int b = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Введите координаты точки");
+            Console.Write("x: ");
+            int x = Convert.ToInt32(Console.ReadLine());
+            Console.Write("y: ");
+            int y = Convert.ToInt32(Console.ReadLine());
 
-            Console.WriteLine(MyBranching.Quarters(a, b));
+            Console.WriteLine(MyBranching.Quarters(x, y));
         }
     }
 }

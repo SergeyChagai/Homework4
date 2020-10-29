@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyLib;
+using System;
 
 namespace Branching2
 {
@@ -6,10 +7,12 @@ namespace Branching2
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Введите координаты точки");
-            int x = Convert.ToInt32(Console.ReadLine());
-            int y = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Введите число А: ");
+            int a = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Введите число B: ");
+            int b = Convert.ToInt32(Console.ReadLine());
 
+            Console.WriteLine(MyBranching.Condition1(a, b));
         }
     }
 }
