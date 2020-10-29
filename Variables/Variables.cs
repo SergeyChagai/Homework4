@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Variables
+namespace MyLib
 {
     public static class MyEquals
     {
@@ -116,5 +116,18 @@ namespace Variables
             }
             return s;
         }
+    }
+    class Branching
+    {
+        public static int Condition1(int a, int b)
+        {
+            if (a > b)
+                return (a + b);
+            else if (a == b)
+                return (a * b);
+            else
+                return (a - b);
+        }
+
     }
 }

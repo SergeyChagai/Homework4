@@ -1,5 +1,5 @@
-﻿using System;
-using Variables;
+﻿using MyLib;
+using System;
 
 namespace Variables4
 {
