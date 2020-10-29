@@ -80,54 +80,6 @@ namespace MyLib
             else
                 return ($"y = {b}");
         }
-        public static double Sqrt(double a)
-        {
-            double s = 1;
-            double i = 1;
-
-            if (a < 0)
-                throw new Exception("Parameter can't be negative");
-            if (a == 0)
-                return 0;
-            while (s <= a && i > 0.0000000001)
-            {
-                if (s * s == a)
-                    return s;
-                else if ((s - 1 + i) * (s - 1 + i) == a)
-                    return ((s - 1 + i));
-                else if (s * s < a)
-                    s = s + i;
-                else if (s * s > a)
-                {
-                    s = s - i + i / 10;
-                    i /= 10;
-                }
-                else if ((s + i) * (s + i) < a)
-                {
-                    s = s - 1 + i;
-                    continue;
-                }
-                else if ((s - 1 + i) * (s - 1 + i) > a)
-                {
-                    i /= 10;
-                    continue;
-                }
-
-            }
-            return s;
-        }
-    }
-    class Branching
-    {
-        public static int Condition1(int a, int b)
-        {
-            if (a > b)
-                return (a + b);
-            else if (a == b)
-                return (a * b);
-            else
-                return (a - b);
-        }
-
+        
     }
 }
