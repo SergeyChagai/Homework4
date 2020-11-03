@@ -14,7 +14,7 @@ namespace Variables5
             int x2 = Convert.ToInt32(Console.ReadLine());
             int y2 = Convert.ToInt32(Console.ReadLine());
 
-            Console.WriteLine(MyEquals.StraightLineEquation(x1, y1, x2, y2));
+            Console.WriteLine(MyVariables.StraightLineEquation(x1, y1, x2, y2));
         }
     }
 }

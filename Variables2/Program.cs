@@ -12,7 +12,7 @@ namespace Variables2
             Console.WriteLine("Введите число b: ");
             int b = Convert.ToInt32(Console.ReadLine());
 
-            MyEquals.Swap(ref a, ref b);
+            MyVariables.Swap(ref a, ref b);
             Console.WriteLine($"Число а = {a}, число b = {b}");
         }
     }

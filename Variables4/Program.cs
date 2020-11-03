@@ -18,7 +18,7 @@ namespace Variables4
             if (a == 0)
                 Console.WriteLine("Коэффициент \"a\" не должен юыть равен нулю");
             else
-                Console.WriteLine($"X равен {MyEquals.EqualsType2(a, b, c)}");
+                Console.WriteLine($"X равен {MyVariables.EqualsType2(a, b, c)}");
         }
     }
 }

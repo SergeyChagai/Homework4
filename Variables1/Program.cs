@@ -13,7 +13,7 @@ namespace Variables1
             int b = Convert.ToInt32(Console.ReadLine());
             if (b != 0)
             {
-                int rep = MyEquals.EqualsType1(a, b);
+                int rep = MyVariables.EqualsType1(a, b);
                 Console.WriteLine($"X равен {rep}");
             }
             else

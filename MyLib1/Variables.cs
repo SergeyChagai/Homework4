@@ -2,10 +2,12 @@
 
 namespace MyLib
 {
-    public static class MyEquals
+    public static class MyVariables
     {
         public static int EqualsType1(int a, int b)
         {
+            if (b - a == 0)
+                throw new Exception("\"b\" can't be equal to \"a\"");
             return ((5 * a - b * b) / (b - a));
         }
 
@@ -45,12 +47,14 @@ namespace MyLib
 
         public static string StraightLineEquation(int x1, int y1, int x2, int y2)
         {
+            if (x1 == x2 && y1 == y2)
+                throw new Exception("Enter the different coordinates");
             if (x1 - x2 == 0)
                 return ($"x = {x1}");
             double a = Division((y1 - y2), (x1 - x2));
-           
+
             double b = y1 - a * x1;
-            if (a != 0 && a != 1 && a != -1)                                                      
+            if (a != 0 && a != 1 && a != -1)
             {
                 if (b > 0)
                     return ($"y = {a}x + {b}");

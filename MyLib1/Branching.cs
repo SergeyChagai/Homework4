@@ -19,15 +19,27 @@ namespace MyLib
 
         public static string Quarters(int x, int y)
         {
+            bool left = y == 0 && x < 0;
+            bool right = y == 0 && x > 0;
+            bool up = y > 0 && x == 0;
+            bool down = y < 0 && x == 0;
             if (x > 0 && y > 0)
                 return ("Точка в первой четверти (верхний правый угол)");
-            if (x < 0 && y > 0)
+            else if (x < 0 && y > 0)
                 return ("Точка во второй четверти (верхний левый угол)");
-            if (x < 0 && y < 0)
+            else if (x < 0 && y < 0)
                 return ("Точка в третьей четверти (нижний левый угол)");
-            if (x > 0 && y < 0)
+            else if (x > 0 && y < 0)
                 return ("Точка в четвертой четверти (нижний правый угол)");
-           else
+            else if (left)
+                return ("Точка на оси абсцисс слева");
+            else if (right)
+                return ("Точка на оси абсцисс справа");
+            else if (up)
+                return ("Точка на оси ординат сверху");
+            else if (down)
+                return ("Точка на оси ординат снизу");
+            else
                 return ("Точка в начале координат");
         }
 
@@ -35,12 +47,11 @@ namespace MyLib
         {
             for (int i = 0; i < arr.Length; i++)
             {
-                int min = arr[i];
+                int min = i;
                 for (int j = i; j < arr.Length; j++)
-                    if (arr[j] < min)
-                        MyEquals.Swap(ref arr[j], ref min);
-                    else
-                        arr[i] = min;
+                    if (arr[j] < arr[min])
+                        min = j;
+                MyVariables.Swap(ref arr[i], ref arr[min]);
             }
             return arr;
         }
@@ -61,7 +72,7 @@ namespace MyLib
                 else if ((s - 1 + i) * (s - 1 + i) == a)
                     return ((s - 1 + i));
                 else if (s * s < a)
-                    s = s + i;
+                    s += i;
                 else if (s * s > a)
                 {
                     s = s - i + i / 10;

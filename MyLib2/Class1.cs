@@ -9,7 +9,7 @@ namespace MyLib2
         {
             int degree = 1;
             for (int i = 0; i < a; i++)
-                degree = degree * a;
+                degree *= a;
             return degree;
         }
     }

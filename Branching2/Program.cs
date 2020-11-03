@@ -1,7 +1,7 @@
 ﻿using MyLib;
 using System;
 
-namespace Branching2
+namespace Branching1
 {
     class Program
     {
