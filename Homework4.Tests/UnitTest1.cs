@@ -1,15 +1,14 @@
 using MyLib;
 using NUnit.Framework;
-using NUnit.Framework.Internal;
 
-namespace NUnitTestProject1
+namespace Homework4.Tests
 {
     public class Variables
     {
-        [TestCase (12, -23, 13)]
-        [TestCase (0, 567, -567)]
-        [TestCase (-534, 0, -5)]
-        [TestCase (456, -1358, 1015)]
+        [TestCase(12, -23, 13)]
+        [TestCase(0, 567, -567)]
+        [TestCase(-534, 0, -5)]
+        [TestCase(456, -1358, 1015)]
 
         public void EqualsType1_Positive(int a, int b, int expected)
         {
@@ -120,7 +119,7 @@ namespace NUnitTestProject1
 
         [TestCase(-56, 89, 651, -465, "y = -0,7835926449787836x + 45,11881188118812")]
         [TestCase(-351, -9871, -8413, -358, "y = -1,1799801538079882x -10285,173033986604")]
-        [TestCase(5, 3, 2 ,0, "y = x -2")]
+        [TestCase(5, 3, 2, 0, "y = x -2")]
         [TestCase(56, 89, 1235, 95, "y = 0,005089058524173028x + 88,7150127226463")]
         [TestCase(5, 89, 5, 9815, "x = 5")]
         public void StraightLineEquation(int x1, int y1, int x2, int y2, string expected)
@@ -161,8 +160,8 @@ namespace NUnitTestProject1
 
         [TestCase(new int[] { 651, 54, 68541 }, new int[] { 54, 651, 68541 })]
         [TestCase(new int[] { 86, -6841, -1500000 }, new int[] { -1500000, -6841, 86 })]
-        [TestCase(new int[] { 0, 0, 0}, new int[] { 0, 0, 0 })]
-        [TestCase(new int[] { 2000000, 500000, 0 }, new int[] { 0, 500000, 2000000})]
+        [TestCase(new int[] { 0, 0, 0 }, new int[] { 0, 0, 0 })]
+        [TestCase(new int[] { 2000000, 500000, 0 }, new int[] { 0, 500000, 2000000 })]
         [TestCase(new int[] { 0, -500000, -2000000 }, new int[] { -2000000, -500000, 0 })]
         public void Increase(int[] arr, int[] expected)
         {
@@ -208,5 +207,4 @@ namespace NUnitTestProject1
 
 
     }
-
 }
