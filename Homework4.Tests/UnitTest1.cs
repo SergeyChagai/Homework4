@@ -632,4 +632,132 @@ namespace Homework4.Tests
             }
         }
     }
+
+    static public class Array2D
+    {
+        [TestCase(1,1)]
+        [TestCase(2,1)]
+        [TestCase(3, -6841)]
+        static public void MinNumber(int case_tab, int expected)
+        {
+            int actual = My2DArray.MinNumber(Array2DMock(case_tab));
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestCase(1, 9)]
+        [TestCase(2, 9)]
+        [TestCase(3, 789)]
+        static public void MaxNumber(int case_tab, int expected)
+        {
+            int actual = My2DArray.MaxNumber(Array2DMock(case_tab));
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestCase(1,1)]
+        [TestCase(2,2)]
+        [TestCase(3,3)]
+        static public void IndexOfMinNumber(int case_tab, int case_coordinates_of_min)
+        {
+            int[] actual = My2DArray.IndexOfMinNumber(Array2DMock(case_tab));
+            Assert.AreEqual(CoordinatesOfMinMock(case_coordinates_of_min), actual);
+        }
+
+        [TestCase(1, 1)]
+        [TestCase(2, 2)]
+        [TestCase(3, 3)]
+        static public void IndexOfMaxNumber(int case_tab, int case_coordinates_of_max)
+        {
+            int[] actual = My2DArray.IndexOfMaxNumber(Array2DMock(case_tab));
+            Assert.AreEqual(CoordinatesOfMaxMock(case_coordinates_of_max), actual);
+        }
+
+        [TestCase(1, 1)]
+        [TestCase(2, 1)]
+        [TestCase(3, 2)]
+        static public void AmountOfNumbersWhoIsBiggerOfTheirNeighbors(int case_tab, int expected)
+        {
+            int actual = My2DArray.AmountOfNumbersWhoIsBiggerOfTheirNeighbors(Array2DMock(case_tab));
+            Assert.AreEqual(expected, actual);
+        }
+        static public int[,] Array2DMock(int a)
+        {
+            int[,] tab;
+            switch (a)
+            {
+                case 1:
+                    tab = new int[,] { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
+                    return tab;
+                case 2:
+                    tab = new int[,] { { 7, 8, 9 }, { 4, 5, 6 }, { 1, 2, 3 } };
+                    return tab;
+                case 3:
+                    tab = new int[,] { { -153, 56, 789 }, { -789, 8, 684 }, { -684, -6841, -321 } };
+                    return tab;
+                case 4:
+                    tab = new int[,] { { 1, 2, 3 }, { 4, 5, 6 } };
+                    return tab;
+                default:
+                    throw new Exception();
+            }
+        }
+        static public int[] CoordinatesOfMinMock(int a)
+        {
+            int[] coordinates;
+            switch (a)
+            {
+                case 1:
+                    coordinates = new int[2] { 0, 0 };
+                    return coordinates;
+                case 2:
+                    coordinates = new int[2] { 2, 0 };
+                    return coordinates;
+                case 3:
+                    coordinates = new int[2] { 2, 1 };
+                    return coordinates;
+                default:
+                    throw new Exception();
+            }
+        }
+
+        static public int[] CoordinatesOfMaxMock(int a)
+        {
+            int[] coordinates;
+            switch (a)
+            {
+                case 1:
+                    coordinates = new int[2] { 2,2};
+                    return coordinates;
+                case 2:
+                    coordinates = new int[2] { 0,2};
+                    return coordinates;
+                case 3:
+                    coordinates = new int[2] { 0,2 };
+                    return coordinates;
+                default:
+                    throw new Exception();
+            }
+        }
+
+        static public int[,] TransposeMatrixMock(int a)
+        {
+            int[,] arr;
+            switch (a)
+            {
+                case 1:
+                    arr = new int[,] { { 1, 4, 7 }, { 2, 5, 8 }, { 3, 6, 9 } };
+                    return arr;
+                case 2:
+                    arr = new int[,] { { 7, 4, 1 }, { 8, 5, 2 }, { 9, 6, 3 } };
+                    return arr;
+                case 3:
+                    arr = new int[,] { { -153, -789, -684 }, { 56, 8, -6841 }, { 789, 684, -321 } };
+                    return arr;
+                case 4:
+                    arr = new int[,] { { 1, 4 }, { 2, 5 }, { 3, 6 } };
+                    return arr;
+                default:
+                    throw new Exception();
+            }
+        }
+    }
 }
