@@ -386,8 +386,250 @@ namespace Homework4.Tests
             Assert.AreEqual(expected, actual);
         }
     }
-    public static class MyArrays
+    public class Array
     {
+        [TestCase(1, 1)]
+        [TestCase(4, -1)]
+        [TestCase(5, 90)]
+        static public void Min_Number(int case_arr, int expected)
+        {
+            int current = MyArray.MinNumber(ArrayMock(case_arr));
+            Assert.AreEqual(expected, current);
+        }
 
+        [Test]
+        static public void Min_Number_Negative()
+        {
+            int[] arr = new int[] { };
+            try
+            {
+                MyArray.MinNumber(arr);
+            }
+            catch
+            {
+                Assert.Pass();
+            }
+            Assert.Fail();
+        }
+
+        [TestCase(1, 6)]
+        [TestCase(4, 5)]
+        [TestCase(5, 6545)]
+        static public void Max_Number(int case_arr, int expected)
+        {
+            int current = MyArray.MaxNumber(ArrayMock(case_arr));
+            Assert.AreEqual(expected, current);
+        }
+
+        [TestCase(1, 0)]
+        [TestCase(4, 5)]
+        [TestCase(5, 3)]
+        static public void IndexMin(int case_arr, int expected)
+        {
+            int current = MyArray.IndexMin(ArrayMock(case_arr));
+            Assert.AreEqual(expected, current);
+        }
+
+        [TestCase(1, 5)]
+        [TestCase(4, 4)]
+        [TestCase(5, 2)]
+        static public void IndexMax(int case_arr, int expected)
+        {
+            int current = MyArray.IndexMax(ArrayMock(case_arr));
+            Assert.AreEqual(expected, current);
+        }
+
+        [TestCase(1, 12)]
+        [TestCase(4, 5)]
+        [TestCase(5, 441)]
+        [TestCase(6, 0)]
+        [TestCase(7, 0)]
+        static public void SumOfNumbersWhoHasImpairIndex(int case_arr, int expected)
+        {
+            int current = MyArray.SumOfNumbersWhoHasImpairIndex(ArrayMock(case_arr));
+            Assert.AreEqual(expected, current);
+        }
+
+        [TestCase(1, 1)]
+        [TestCase(2, 2)]
+        [TestCase(3, 3)]
+        [TestCase(4, 4)]
+        static public void ReverseArray(int case_arr, int case_reversed_arr)
+        {
+            int[] current = MyArray.ReverseArray(ArrayMock(case_arr));
+            Assert.AreEqual(ReversedArrayMock(case_reversed_arr), current);
+        }
+
+        [TestCase(1, 3)]
+        [TestCase(2, 4)]
+        [TestCase(3, 3)]
+        [TestCase(4, 4)]
+        [TestCase(5, 4)]
+        [TestCase(6, 0)]
+        static public void NumberOfImpairElements(int case_arr, int expected)
+        {
+            int current = MyArray.NumberOfImpairElements(ArrayMock(case_arr));
+            Assert.AreEqual(expected, current);
+        }
+
+        [TestCase(1, 1)]
+        [TestCase(2, 2)]
+        [TestCase(3, 3)]
+        static public void HalfSwap(int case_arr, int case_expected_arr)
+        {
+
+            int[] current = MyArray.HalfSwap(ArrayMock(case_arr));
+            Assert.AreEqual(ExpectedArrayMock(case_expected_arr), current);
+        }
+
+        [TestCase(1, 1)]
+        [TestCase(2, 2)]
+        [TestCase(3, 3)]
+        [TestCase(4, 4)]
+        [TestCase(5, 5)]
+        [TestCase(8, 8)]
+        static public void SortIncrease(int case_arr, int case_sorted_arr)
+        {
+            int[] current = MyArray.SortIncrease(ArrayMock(case_arr));
+            Assert.AreEqual(SortedIncreaseArrayMock(case_sorted_arr), current);
+        }
+
+        [TestCase(1, 1)]
+        [TestCase(2, 2)]
+        [TestCase(3, 3)]
+        [TestCase(4, 4)]
+        [TestCase(5, 5)]
+        static public void SortDecrease(int case_arr, int case_sorted_arr)
+        {
+            int[] current = MyArray.SortDecrease(ArrayMock(case_arr));
+            Assert.AreEqual(SortedDecreaseArrayMock(case_sorted_arr), current);
+        }
+        static public int[] ArrayMock(int a)
+        {
+            int[] arr;
+            switch (a)
+            {
+                case 1:
+                    arr = new int[] { 1, 2, 3, 4, 5, 6 };
+                    return arr;
+                case 2:
+                    arr = new int[] { 1, 2, 3, 4, 5, 6, 7 };
+                    return arr;
+                case 3:
+                    arr = new int[] { 1, 2, 3, 4, 5 };
+                    return arr;
+                case 4:
+                    arr = new int[] { 1, 2, 3, 4, 5, -1 };
+                    return arr;
+                case 5:
+                    arr = new int[] { 111, 351, 6545, 90, 6515 };
+                    return arr;
+                case 6:
+                    arr = new int[] { };
+                    return arr;
+                case 7:
+                    arr = new int[] { 1 };
+                    return arr;
+                case 8:
+                    arr = new int[] { 9, 7, 8, 3, 5, 4, 1, 6, 2 };
+                    return arr;
+                default:
+                    throw new Exception();
+            }
+        }
+
+        static public int[] ExpectedArrayMock(int a)
+        {
+            int[] arr;
+            switch (a)
+            {
+                case 1:
+                    arr = new int[] { 4, 5, 6, 1, 2, 3 };
+                    return arr;
+                case 2:
+                    arr = new int[] { 5, 6, 7, 4, 1, 2, 3 };
+                    return arr;
+                case 3:
+                    arr = new int[] { 4, 5, 3, 1, 2 };
+                    return arr;
+                default:
+                    throw new Exception();
+            }
+        }
+
+        static public int[] ReversedArrayMock(int a)
+        {
+            int[] arr;
+            switch (a)
+            {
+                case 1:
+                    arr = new int[] { 6, 5, 4, 3, 2, 1 };
+                    return arr;
+                case 2:
+                    arr = new int[] { 7, 6, 5, 4, 3, 2, 1 };
+                    return arr;
+                case 3:
+                    arr = new int[] { 5, 4, 3, 2, 1 };
+                    return arr;
+                case 4:
+                    arr = new int[] { -1, 5, 4, 3, 2, 1 };
+                    return arr;
+                default:
+                    throw new Exception();
+            }
+
+        }
+        static public int[] SortedIncreaseArrayMock(int a)
+        {
+            int[] arr;
+            switch (a)
+            {
+                case 1:
+                    arr = new int[] { 1, 2, 3, 4, 5, 6 };
+                    return arr;
+                case 2:
+                    arr = new int[] { 1, 2, 3, 4, 5, 6, 7 };
+                    return arr;
+                case 3:
+                    arr = new int[] { 1, 2, 3, 4, 5 };
+                    return arr;
+                case 4:
+                    arr = new int[] { -1, 1, 2, 3, 4, 5 };
+                    return arr;
+                case 5:
+                    arr = new int[] { 90, 111, 351, 6515, 6545 };
+                    return arr;
+                case 8:
+                    arr = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+                    return arr;
+                default:
+                    throw new Exception();
+            }
+        }
+
+        static public int[] SortedDecreaseArrayMock(int a)
+        {
+            int[] arr;
+            switch (a)
+            {
+                case 1:
+                    arr = new int[] { 6, 5, 4, 3, 2, 1 };
+                    return arr;
+                case 2:
+                    arr = new int[] { 7, 6, 5, 4, 3, 2, 1 };
+                    return arr;
+                case 3:
+                    arr = new int[] { 5, 4, 3, 2, 1 };
+                    return arr;
+                case 4:
+                    arr = new int[] { 5, 4, 3, 2, 1, -1 };
+                    return arr;
+                case 5:
+                    arr = new int[] { 6545, 6515, 351, 111, 90 };
+                    return arr;
+                default:
+                    throw new Exception();
+            }
+        }
     }
 }
