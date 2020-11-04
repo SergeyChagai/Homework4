@@ -1,5 +1,7 @@
+using Microsoft.VisualStudio.TestPlatform.ObjectModel;
 using MyLib;
 using NUnit.Framework;
+using System;
 
 namespace Homework4.Tests
 {
@@ -130,14 +132,14 @@ namespace Homework4.Tests
 
     }
 
-    public class Branching
+    public static class Branching
     {
         [TestCase(0, 0, 0)]
         [TestCase(1500000, 500000, 2000000)]
         [TestCase(-500000, 1500000, -2000000)]
         [TestCase(1000, 1000, 1000000)]
         [TestCase(-1000, -1000, 1000000)]
-        public void Condition1(int a, int b, int expected)
+        public static void Condition1(int a, int b, int expected)
         {
             int actual = MyBranching.Condition1(a, b);
             Assert.AreEqual(expected, actual);
@@ -152,7 +154,7 @@ namespace Homework4.Tests
         [TestCase(0, 684, "Точка на оси ординат сверху")]
         [TestCase(0, -680, "Точка на оси ординат снизу")]
         [TestCase(0, 0, "Точка в начале координат")]
-        public void Quarters(int x, int y, string expected)
+        public static void Quarters(int x, int y, string expected)
         {
             string actual = MyBranching.Quarters(x, y);
             Assert.AreEqual(expected, actual);
@@ -163,7 +165,7 @@ namespace Homework4.Tests
         [TestCase(new int[] { 0, 0, 0 }, new int[] { 0, 0, 0 })]
         [TestCase(new int[] { 2000000, 500000, 0 }, new int[] { 0, 500000, 2000000 })]
         [TestCase(new int[] { 0, -500000, -2000000 }, new int[] { -2000000, -500000, 0 })]
-        public void Increase(int[] arr, int[] expected)
+        public static void Increase(int[] arr, int[] expected)
         {
             int[] actual = MyBranching.Increase(arr);
             Assert.AreEqual(expected, actual);
@@ -174,14 +176,14 @@ namespace Homework4.Tests
         [TestCase(2000000, 1414.2135623730950488016887242097)]
         [TestCase(0, 0)]
         [TestCase(9, 3)]
-        public void Sqrt_Positive(double a, double expected)
+        public static void Sqrt_Positive(double a, double expected)
         {
             double actual = MyBranching.Sqrt(a);
             Assert.AreEqual(expected, actual, 0.00000001);
         }
 
         [Test]
-        public void Sqrt_Negative()
+        public static void Sqrt_Negative()
         {
             try
             {
@@ -199,12 +201,193 @@ namespace Homework4.Tests
         [TestCase(60, "шестьдесят \n")]
         [TestCase(10, "десять\n")]
         [TestCase(56, "пятьдесят шесть\n")]
-        public void CallingNumber(int a, string expected)
+        public static void CallingNumber(int a, string expected)
         {
             string actual = MyBranching.CallingNumber(a);
             Assert.AreEqual(expected, actual);
         }
+    }
+    public static class Cycle
+    {
+        [TestCase(2,2,4)]
+        [TestCase(0,0,1)]
+        [TestCase(0,1,0)]
+        [TestCase(11,2,121)]
+        public static void Degree(int num, int pow, double exepted)
+        {
+            double actual = MyCycle.Degree(num, pow);
+            Assert.AreEqual(exepted, actual);
+        }
 
+        [Test]
+        public static void DegreeNegative()
+        {
+            try
+            {
+                MyCycle.Degree(2, -8);
+            }
+            catch
+            {
+                Assert.Pass();
+            }
+            Assert.Fail();
+        }
+
+        [TestCase(7, 100, 1)]
+        [TestCase(10, 100, 2)]
+        [TestCase(9,100,3)]
+        [TestCase(100, 100, 4)]
+        [TestCase(100, 90, 5)]
+        public static void AmountOfNumWhoDivide(int num, int rightboarder, int numberOfCase)
+        {
+            int[] actual = MyCycle.NumWhoDivide(num, rightboarder);
+            Assert.AreEqual(ArrayMock1(numberOfCase), actual);
+        }
+
+        public static int[] ArrayMock1(int a)
+        {
+            int[] arr;
+            switch (a)
+            {
+                case 1:
+                    arr = new int[] { 7,14,21,28,35,42,49,56,63,70,77,84,91,98 };
+                    return arr;
+                case 2:
+                    arr = new int[] {10,20,30,40,50,60,70,80,90,100 };
+                    return arr;
+                case 3:
+                    arr = new int[] { 9,18,27,36,45,54,63,72,81,90,99};
+                    return arr;
+                case 4:
+                    arr = new int[] { 100};
+                    return arr;
+                case 5:
+                    arr = new int[] { };
+                    return arr;
+                default:
+                    throw new Exception();
+            }
+        }
+
+        [TestCase(10, 3)]
+        [TestCase(2, 1)]
+        [TestCase(20, 4)]
+        [TestCase(40001, 200)]
+        public static void AmountOfNumSquareLessThan(int a, int expected)
+        {
+            int actual = MyCycle.AmountOfNumSquareLessThan(a);
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestCase(0)]
+        [TestCase(-1)]
+        public static void AmountOfNumSquareLessThanNegative(int a)
+        {
+            try
+            {
+                MyCycle.AmountOfNumSquareLessThan(a);
+            }
+            catch
+            {
+                Assert.Pass();
+            }
+            Assert.Fail();
+        }
+
+        [TestCase(7, 1)]
+        [TestCase(20, 10)]
+        [TestCase(45154, 22577)]
+        [TestCase(45153, 15051)]
+        public static void BiggerDividerOf(int a, int expected)
+        {
+            int actual = MyCycle.BiggerDividerOf(a);
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestCase(7,0,8,7)]
+        [TestCase(7,-20,20,0)]
+        [TestCase(7,0,0,0)]
+        [TestCase(7,20,0,21)]
+        public static void SumOfDivisibleNum(int div, int left, int right, int expected)
+        {
+            int actual = MyCycle.SumOfDivisibleNum(div, left, right);
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestCase(1,1)]
+        [TestCase(2,1)]
+        [TestCase(3,2)]
+        [TestCase(30, 832040)]
+        public static void NumOfFibonacci(int n, int expected)
+        {
+            int actual = MyCycle.NumOfFibonacci(n);
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestCase(7,14,7)]
+        [TestCase(968438, 3217, 1)]
+        [TestCase(73217, 968438,1)]
+        [TestCase(6515, 2091315, 6515)]
+        public static void GreatestCommonFactor(int a, int b, int expected)
+        {
+            int actual = MyCycle.GreatestCommonFactor(a, b);
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestCase(27,3)]
+        [TestCase(125,5)]
+        [TestCase(-512,-8)]
+        [TestCase(-804357, -93)]
+        public static void CubicRoot(double n, double expected)
+        {
+            double actual = MyCycle.CubicRoot(n);
+            Assert.AreEqual(expected, actual, 0.00001);
+        }
+
+        [TestCase(354125, 4)]
+        [TestCase(98413, 3)]
+        [TestCase(-32168, 2)]
+        [TestCase(0, 0)]
+        public static void ImpairDigits(int a, int expected)
+        {
+            int actual = MyCycle.ImpairDigits(a);
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestCase(123, 321)]
+        [TestCase(684315, 513486)]
+        [TestCase(35486, 68453)]
+        [TestCase(-54274, 47245)]
+        public static void ReverseNum(int a, int expected)
+        {
+            int actual = MyCycle.ReverseNum(a);
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestCase(1,13, 5)]
+        [TestCase(111,122, 5)]
+        [TestCase(110, 115, 1)]
+        [TestCase(1111, 1120, 3)]
+        [TestCase(13, 1, 5)]
+        [TestCase(10, -10, 8)]
+        public static void PairImpair(int a, int n, int expected)
+        {
+            int actual = MyCycle.PairImpair(a, n);
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestCase(1234, 56781, true)]
+        [TestCase(1234, 56789, false)]
+        [TestCase(-1234, 56789, false)]
+        [TestCase(1234, -56781, true)]
+        public static void SameDigits(int a, int b, bool expected)
+        {
+            bool actual = MyCycle.SameDigits(a, b);
+            Assert.AreEqual(expected, actual);
+        }
+    }
+    public static class MyArrays
+    {
 
     }
 }

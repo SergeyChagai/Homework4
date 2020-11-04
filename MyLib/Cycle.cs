@@ -2,31 +2,37 @@
 
 namespace MyLib
 {
-    public static class Cycle
+    public static class MyCycle
     {
-        public static int Degree(int num, int pow)
+        public static double Degree(int num, int pow)
         {
-            int degree = 1;
-            for (int i = 0; i < pow; i++)
-                degree = degree * num;
-            return degree;
+            double degree = 1;
+            if (pow >= 0)
+            {
+                for (int i = 0; i < pow; i++)
+                    degree = degree * num;
+                return degree;
+            }
+            else
+                throw new Exception("Parameter \"pow\" should be positive or equal to zero");
         }
 
-        public static string AmountOfNumWhoDivide(int num, int area)
+        public static int[] NumWhoDivide(int num, int rightboarder)
         {
-            int i = 1;
-            string s = "";
-
-            while (i <= area)
+            int[] rep = new int[rightboarder / num];
+            int j = 0;
+            for(int i = num; i <= rightboarder; i+=num)
             {
                 if (i % num == 0)
-                    s += $"{i} ";
-                i++;
+                    rep[j] = i;
+                j++;
             }
-            return s;
+            return rep;
         }
         public static int AmountOfNumSquareLessThan(int a)
         {
+            if (a <= 0)
+                throw new Exception("Paraneter should be positive");
             int s = 0;
 
             while (s * s < a)
@@ -35,6 +41,8 @@ namespace MyLib
         }
         public static int BiggerDividerOf(int a)
         {
+            if (a == 0)
+                throw new Exception("Parameter can't be equal to zero");
             int rep = 1;
             bool flag = (a < 0) ? true : false;
             if (flag)
@@ -56,11 +64,7 @@ namespace MyLib
             int rep = 0;
 
             if (left > right)
-            {
-                int buf = left;
-                left = right;
-                right= buf;
-            }
+                MyVariables.Swap(ref left, ref right);
 
             while (left <= right)
             {
@@ -75,6 +79,8 @@ namespace MyLib
         }
         public static int NumOfFibonacci(int n)
         {
+            if (n <= 0)
+                throw new Exception("Parameter should be positive");
             int f = 1;
             int f_n_1 = 1;                                          //это для записи предыдущего числа
 
@@ -89,7 +95,6 @@ namespace MyLib
         }
         public static int GreatestCommonFactor(int a, int b)
         {
-            int rep = 1;
 
             if (a < b)
             {
@@ -98,16 +103,24 @@ namespace MyLib
                 b = buf;
             }
 
-            while (b != 0)
+            while (b != 1)
             {
-                rep = b;
-                b = a % b;
+                if (a % b == 0)
+                    return b;
+                a = a % b;
+                MyVariables.Swap(ref a, ref b);
             }
 
-            return rep;
+            return b;
         }
         public static double CubicRoot(double n)
         {
+            bool flag = false;
+            if (n < 0)
+            {
+                flag = true;
+                n *= -1;
+            }
             double rightBoarder = n;
             double leftBoarder = 0;
             double midPoint = 0;
@@ -127,7 +140,10 @@ namespace MyLib
                     leftBoarder = midPoint;
                 }
             }
-            return midPoint;
+            if (flag)
+                return midPoint * -1;
+            else
+                return midPoint;
         }
         public static int ImpairDigits(int a)
         {
@@ -156,15 +172,17 @@ namespace MyLib
             return b;
         }
 
-        public static int PairImpair(int a, int n)
+        public static int PairImpair(int a, int n)      //a - левая граница диапазона, n - правая
         {
             int x = 0;
+
             if (a > n)
             {
                 int temp = a;
                 a = n;
                 n = temp;
             }
+            
             for (int i = a; i <= n; i++)
             {
                 int sum_p = 0;
@@ -173,12 +191,16 @@ namespace MyLib
 
                 while (buf != 0)
                 {
-                    if ((buf % 10) % 2 == 0)
+                    if ((buf % 10) != 0 && (buf % 10) % 2 == 0)
                         sum_p += buf % 10;
-                    else if ((buf % 10) % 2 != 0)
+                    else if ((buf % 10) != 0 && (buf % 10) % 2 != 0)
                         sum_imp += buf % 10;
                     buf /= 10;
                 }
+                if (sum_p < 0)
+                    sum_p *= -1;
+                if (sum_imp < 0)
+                    sum_imp *= -1;
                 if (sum_p > sum_imp)
                     x++;
             }
@@ -187,12 +209,12 @@ namespace MyLib
         public static bool SameDigits(int a, int b)
         {
             bool rep = false;
-            int temp = b;
 
             if (a < 0)
                 a *= -1;
             if (b < 0)
                 b *= -1;
+            int temp = b;
             while (a != 0)
             {
                 while (b != 0)
